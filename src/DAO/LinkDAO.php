@@ -184,4 +184,20 @@ class LinkDAO extends DAO
     public function deleteAllByUser($userId) {
         $this->getDb()->delete('tl_liens', array('user_id' => $userId));
     }
+
+    /**
+     * Count links for paginating
+     * 
+     * @return int a number of lines of links
+     */
+
+     public static function CountLinks() {
+        $sql = "
+        'SELECT COUNT(*) AS total FROM tl_liens'
+        ";
+        $totalLinks = $this->getDb()->fetchAll($sql);
+        var_dump($totalLinks); die();
+        return $totalLinks;
+        
+     }
 }
